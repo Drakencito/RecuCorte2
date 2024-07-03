@@ -12,7 +12,7 @@ body {
 
 
 #maestros, #alumnos {
-    background-color: #fff;
+    background-color: #d8d8d8;
     width: 40%;
     max-width: 600px;
     border-radius: 8px;
@@ -50,7 +50,7 @@ body {
 
 #alumnos li {
     text-align: right;
-    background-color: #0cd0da;
+    background-color: #d0da0c;
     color: #000000;
     
 }
