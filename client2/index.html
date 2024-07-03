@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Mensaje</title>
+    <link rel="stylesheet" href="index.css">
+  
+</head>
+<body>
+    
+    <div>
+        <h1>Enviar Mensaje</h1>
+        <form id="messageForm">
+            <label for="message">mensaje:</label>
+            <input type="text" id="message" name="message" placeholder="Ingrese su mensaje" required>
+            
+            <label for="user">tipo:</label>
+            <select id="user" name="user" required>
+                <option value="">Seleccione ua opcion</option>
+                <option value="alumno">Alumno</option>
+                <option value="maestro">Maestro</option>
+            </select>
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+  
+
+    <script>
+        const messageForm = document.getElementById('messageForm');
+
+        messageForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(messageForm);
+            const message = formData.get('message');
+            const user = formData.get('user');
+
+            fetch('http://localhost:3000/message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message, user })
+            })
+            
+        });
+    </script>
+</body>
+</html>

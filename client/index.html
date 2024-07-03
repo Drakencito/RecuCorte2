@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSE</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="maestros"></div>
+    <div id="alumnos"></div>
+    
+    <script>
+        const mensajeDiv = document.getElementById('maestros');
+        const source1 = new EventSource("http://localhost:3000/maestros");
+        
+    
+        source1.onmessage = function(event) {
+            const li = document.createElement('li');
+            li.textContent = event.data;
+            mensajeDiv.appendChild(li);
+        }
+
+
+        const mensajeDiv2 = document.getElementById('alumnos');
+        const source2 = new EventSource("http://localhost:3000/alumnos");
+        
+    
+        source2.onmessage = function(event) {
+            const li = document.createElement('li');
+            li.textContent = event.data;
+            mensajeDiv2.appendChild(li);
+        }
+        
+       
+    </script>
+</body>
+</html>
